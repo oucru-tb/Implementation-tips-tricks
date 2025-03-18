@@ -15,8 +15,8 @@
 #!/bin/sh
 taskset -c <core_list> Rscript <R_path_file>
 ```
-với `<core_list>` là danh sách các cores mà mọi người muốn sử dụng, ví dụ như mọi người cần request 3 cores, và mọi người check core thứ 3, 5 và 7 đang còn trống để chạy task của mình với file R ở trên thì mọi người sẽ thiết kế taskset như sau:
+với `<core_list>` là danh sách các cores mà mọi người muốn sử dụng, ví dụ như mọi người cần request 3 cores, và mọi người check core thứ 3, 5 và 7 (trên htop sẽ hiện từ các core theo thứ tự 1 -> 80 nhưng bash sẽ nhận giá trị từ 0 -> 79) đang còn trống để chạy task của mình với file R ở trên thì mọi người sẽ thiết kế taskset như sau:
 ```{bash}
-taskset -c 3,5,7 Rscript example.R
+taskset -c 2,4,6 Rscript example.R
 ```
 khi đó, taskset sẽ reserve 3 cores này chỉ phục vụ riêng cho tác vụ của mọi người và chỉ thực hiện trên các cores đã được khai báo và không ảnh hưởng đến các cores còn lại trong server.
