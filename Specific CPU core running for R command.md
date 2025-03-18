@@ -13,8 +13,6 @@
 - Mọi người tạo 1 file bash script (ví dụ `execute.sh`) theo template:
 ```{bash}
 #!/bin/sh
-shopt -s expand_aliases
-
 taskset -c <core_list> Rscript <R_path_file>
 ```
 với `<core_list>` là danh sách các cores mà mọi người muốn sử dụng, ví dụ như mọi người cần request 3 cores, và mọi người check core thứ 3, 5 và 7 đang còn trống để chạy task của mình với file R ở trên thì mọi người sẽ thiết kế taskset như sau:
